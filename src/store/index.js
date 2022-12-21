@@ -1,11 +1,11 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore } from "@reduxjs/toolkit";
 
-import { postReducer } from './posts'
-import { commentReducer } from './comments,js'
+import { postReducer } from "./posts";
+import { commentReducer } from "./comments.js";
 
 export const store = configureStore({
   reducer: {
     posts: postReducer,
-    comments: commentReducer
+    comments: commentReducer,
   },
-})
+});
