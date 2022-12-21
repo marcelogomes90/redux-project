@@ -1,4 +1,4 @@
-import { Flex, Text, Button } from "@amigoapp/doca-react";
+import { Flex, Text, Button, Separator } from "@amigoapp/doca-react";
 import Comments from "../comments/Comments";
 
 function Posts({ posts, onButtonClick, comments, postId, commentsShow }) {
@@ -12,8 +12,8 @@ function Posts({ posts, onButtonClick, comments, postId, commentsShow }) {
                 gap={2}
                 key={post.id}
             >
-                <Text as="h1" weight="bold">{post.title}</Text>
-                <Text as="p">{post.body}</Text>
+                <Text as="h1" weight="bold" size="large">{post.title}</Text>
+                <Text size="small">{post.body}</Text>
                 <Button
                     block
                     className="doca-mb-2"
@@ -28,6 +28,7 @@ function Posts({ posts, onButtonClick, comments, postId, commentsShow }) {
                     postId={postId}
                     comments={comments}
                 /> : null}
+                <Separator />
             </Flex>
             ))}
         </>

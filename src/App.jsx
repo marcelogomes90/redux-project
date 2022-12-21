@@ -1,26 +1,27 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { getPosts } from "./store/posts";
+import { getComments } from "./store/comments,js";
 import Posts from "./components/posts/Posts";
 
 function App() {
   const [commentsShow, setCommentsShow] = useState(false);
   const [postId, setPostId] = useState('');
-  const [posts, setPosts] = useState([]);
-  const [comments, setComments] = useState([]);
+
+  const dispatch = useDispatch()
+
+  const { posts } = useSelector((state) => state.posts)
+  const { comments } = useSelector((state) => state.comments)
 
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/posts')
-      .then(response => response.json())
-      .then(dataPosts => setPosts(dataPosts))
-
-    fetch(`https://jsonplaceholder.typicode.com/comments`)
-      .then(response => response.json())
-      .then(dataComment => setComments(dataComment))
+    dispatch(getPosts());
+    dispatch(getComments());
   }, [])
 
-  const onButtonClick = (id) => {
-    commentsShow ? setCommentsShow(false) : setCommentsShow(true);
+  const onButtonClick = useCallback((id) => {
+    commentsShow && id === postId ? setCommentsShow(false) : setCommentsShow(true);
     setPostId(id);
-  };
+  }, [postId, commentsShow]);
 
   return (
     <div className="doca-m-8">
