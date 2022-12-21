@@ -1,7 +1,8 @@
 import { Flex, Text, Button, Separator } from "@amigoapp/doca-react";
+import Users from "../users/Users";
 import Comments from "../comments/Comments";
 
-function Posts({ posts, onButtonClick, comments, postId, commentsShow }) {
+function Posts({ posts, onButtonClick, comments, postId, commentsShow, users }) {
   return (
     <>
       {posts.map((post) => (
@@ -10,6 +11,10 @@ function Posts({ posts, onButtonClick, comments, postId, commentsShow }) {
             {post.title}
           </Text>
           <Text size="small">{post.body}</Text>
+          <Users
+            users={users}
+            postUserId={post.userId}
+          />
           <Button
             block
             className="doca-mb-2"
