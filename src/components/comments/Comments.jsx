@@ -21,4 +21,4 @@ function Comments({ comments, postId }) {
   )
 }
 
-export default Comments
+export default Comments;

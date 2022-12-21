@@ -26,7 +26,7 @@ function Posts({ posts, onButtonClick, comments, postId, commentsShow }) {
                 {commentsShow && post.id === postId ?
                 <Comments
                     postId={postId}
-                    coments={comments}
+                    comments={comments}
                 /> : null}
             </Flex>
             ))}
