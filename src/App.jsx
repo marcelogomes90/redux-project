@@ -26,7 +26,7 @@ function App() {
     }
   ];
 
-  const coments = [
+  const comments = [
     {
       "postId": 1,
       "id": 1,
@@ -57,18 +57,17 @@ function App() {
     }
   ];
 
-  const openInfos = (id) => {
-    commentsShow ? setCommentsShow(false) : setCommentsShow(true);
-    setPostId(id)
+  const onButtonClick = (id) => {
+    commentsShow ? setCommentsShow(false) && setPostId('') : setCommentsShow(true) && setPostId(id);
   };
 
   return (
     <div className="doca-m-8">
       <Posts
         posts={posts}
-        openInfos={openInfos}
+        onButtonClick={onButtonClick}
         postId={postId}
-        coments={coments}
+        comments={comments}
         commentsShow={commentsShow}
       />
     </div>

@@ -1,7 +1,7 @@
 import { Flex, Text, Button } from "@amigoapp/doca-react";
 import Comments from "../comments/Comments";
 
-function Posts({ posts, openInfos, coments, postId, commentsShow }) {
+function Posts({ posts, onButtonClick, comments, postId, commentsShow }) {
 
     return (
         <>
@@ -18,7 +18,7 @@ function Posts({ posts, openInfos, coments, postId, commentsShow }) {
                     block
                     className="doca-mb-2"
                     size="small"
-                    onClick={(id) => openInfos(post.id)}
+                    onClick={(id) => onButtonClick(post.id)}
                     variant="secondary"
                 >
                 Comentários
@@ -26,7 +26,7 @@ function Posts({ posts, openInfos, coments, postId, commentsShow }) {
                 {commentsShow && post.id === postId ?
                 <Comments
                     postId={postId}
-                    coments={coments}
+                    coments={comments}
                 /> : null}
             </Flex>
             ))}
