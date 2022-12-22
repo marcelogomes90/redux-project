@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, createEntityAdapter } from "@reduxjs/toolkit";
 
 const initialState = {
   posts: [],
@@ -6,15 +6,19 @@ const initialState = {
 };
 
 export const getPosts = createAsyncThunk("posts/getPosts", async (thunkAPI) => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/posts").then
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=20").then
     ((data) => data.json()
   );
   return res;
 });
 
+const postsAdapter = createEntityAdapter({
+  selectId: (posts) => posts.id,
+});
+
 export const postSlice = createSlice({
   name: "posts",
-  initialState,
+  initialState: postsAdapter.getInitialState({ loading: false }),
   reducers: {},
   extraReducers: {
     [getPosts.pending]: (state) => {
@@ -22,12 +26,14 @@ export const postSlice = createSlice({
     },
     [getPosts.fulfilled]: (state, { payload }) => {
       state.loading = false;
-      state.posts = payload;
+      postsAdapter.setAll(state, payload);
     },
     [getPosts.rejected]: (state) => {
       state.loading = false;
     },
   },
 });
+
+export const postSelector = postsAdapter.getSelectors((state) => state.posts);
 
 export const postReducer = postSlice.reducer;

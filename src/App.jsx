@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPosts } from "./store/posts";
-import { getComments } from "./store/comments.js";
-import { getUsers } from "./store/users";
+import { getPosts, postSelector } from "./store/posts";
+import { getComments, commentSelector } from "./store/comments.js";
+import { getUsers, userSelector } from "./store/users";
 import Posts from "./components/posts/Posts";
 
 function App() {
@@ -11,9 +11,9 @@ function App() {
 
   const dispatch = useDispatch();
 
-  const { posts } = useSelector((state) => state.posts);
-  const { comments } = useSelector((state) => state.comments);
-  const { users } = useSelector((state) => state.users);
+  const posts = useSelector(postSelector.selectAll);
+  const comments = useSelector(commentSelector.selectAll);
+  const users = useSelector(userSelector.selectAll);
 
   useEffect(() => {
     dispatch(getPosts());

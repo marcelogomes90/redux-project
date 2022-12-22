@@ -1,20 +1,24 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, createEntityAdapter } from "@reduxjs/toolkit";
 
 const initialState = {
   users: [],
   loading: false,
 };
 
-export const getUsers = createAsyncThunk("posts/getUsers", async (thunkAPI) => {
+export const getUsers = createAsyncThunk("users/getUsers", async (thunkAPI) => {
   const res = await fetch("https://jsonplaceholder.typicode.com/users").then
     ((data) => data.json()
   );
   return res;
 });
 
+const usersAdapter = createEntityAdapter({
+  selectId: (users) => users.id,
+});
+
 export const userSlice = createSlice({
   name: "users",
-  initialState,
+  initialState: usersAdapter.getInitialState({ loading: false }),
   reducers: {},
   extraReducers: {
     [getUsers.pending]: (state) => {
@@ -22,12 +26,14 @@ export const userSlice = createSlice({
     },
     [getUsers.fulfilled]: (state, { payload }) => {
       state.loading = false;
-      state.users = payload;
+      usersAdapter.setAll(state, payload);
     },
     [getUsers.rejected]: (state) => {
       state.loading = false;
     },
   },
 });
+
+export const userSelector = usersAdapter.getSelectors((state) => state.users);
 
 export const userReducer = userSlice.reducer;
