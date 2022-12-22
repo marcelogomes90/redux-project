@@ -1,10 +1,5 @@
 import { createSlice, createAsyncThunk, createEntityAdapter } from "@reduxjs/toolkit";
 
-const initialState = {
-  comments: [],
-  loading: false,
-};
-
 export const getComments = createAsyncThunk("comments/getComments", async (thunkAPI) => {
   const res = await fetch("https://jsonplaceholder.typicode.com/comments?_limit=100").then
     ((data) => data.json()

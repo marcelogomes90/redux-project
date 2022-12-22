@@ -1,10 +1,5 @@
 import { createSlice, createAsyncThunk, createEntityAdapter } from "@reduxjs/toolkit";
 
-const initialState = {
-  posts: [],
-  loading: false,
-};
-
 export const getPosts = createAsyncThunk("posts/getPosts", async (thunkAPI) => {
   const res = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=20").then
     ((data) => data.json()

@@ -1,10 +1,5 @@
 import { createSlice, createAsyncThunk, createEntityAdapter } from "@reduxjs/toolkit";
 
-const initialState = {
-  users: [],
-  loading: false,
-};
-
 export const getUsers = createAsyncThunk("users/getUsers", async (thunkAPI) => {
   const res = await fetch("https://jsonplaceholder.typicode.com/users").then
     ((data) => data.json()
