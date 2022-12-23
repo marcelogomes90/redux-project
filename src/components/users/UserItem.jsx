@@ -7,7 +7,7 @@ function UserItem({ userInfo }) {
 
   return (
     <>
-      <Flex key={userContent.name} gap={5} className="doca-mb-4">
+      <Flex gap={5} className="doca-mb-4">
         <Text
           variant="gray"
           size="extra-small"
