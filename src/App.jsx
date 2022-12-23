@@ -11,9 +11,9 @@ function App() {
 
   const dispatch = useDispatch();
 
-  const posts = useSelector(postSelector.selectAll);
+  const posts = useSelector(postSelector.selectIds);
   const comments = useSelector(commentSelector.selectAll);
-  const users = useSelector(userSelector.selectAll);
+  const users = useSelector(userSelector.selectIds);
 
   useEffect(() => {
     dispatch(getPosts());
