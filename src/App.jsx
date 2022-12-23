@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPosts, postSelector } from "./store/posts";
-import { getComments, commentSelector } from "./store/comments.js";
-import { getUsers, userSelector } from "./store/users";
+import { getPosts, postSelector } from "./store/slices/posts";
+import { getComments, commentSelector } from "./store/slices/comments.js";
+import { getUsers, userSelector } from "./store/slices/users";
 import Posts from "./components/posts/Posts";
 
 function App() {
