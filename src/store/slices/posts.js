@@ -15,17 +15,18 @@ export const postSlice = createSlice({
   name: "posts",
   initialState: postsAdapter.getInitialState({ loading: false }),
   reducers: {},
-  extraReducers: {
-    [getPosts.pending]: (state) => {
-      state.loading = true;
-    },
-    [getPosts.fulfilled]: (state, { payload }) => {
-      state.loading = false;
-      postsAdapter.setAll(state, payload);
-    },
-    [getPosts.rejected]: (state) => {
-      state.loading = false;
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getPosts.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getPosts.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        postsAdapter.setAll(state, payload);
+      })
+      .addCase(getPosts.rejected, (state) => {
+        state.loading = true;
+      })
   },
 });
 

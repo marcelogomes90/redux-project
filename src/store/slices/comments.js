@@ -15,17 +15,18 @@ export const commentSlice = createSlice({
   name: "comments",
   initialState: commentsAdapter.getInitialState({ loading: false }),
   reducers: {},
-  extraReducers: {
-    [getComments.pending]: (state) => {
-      state.loading = true;
-    },
-    [getComments.fulfilled]: (state, { payload }) => {
-      state.loading = false;
-      commentsAdapter.setAll(state, payload);
-    },
-    [getComments.rejected]: (state) => {
-      state.loading = false;
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getComments.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getComments.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        commentsAdapter.setAll(state, payload);
+      })
+      .addCase(getComments.rejected, (state) => {
+        state.loading = true;
+      })
   },
 });
 
