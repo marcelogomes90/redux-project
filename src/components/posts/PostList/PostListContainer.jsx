@@ -12,7 +12,7 @@ function PostListContainer() {
   const dispatch = useDispatch();
 
   const postsIds = useSelector(postSelector.selectIds);
-  const commentsIds = useSelector(commentSelector.selectIds);
+  const CommentsObject = useSelector(commentSelector.selectAll);
 
   useEffect(() => {
     dispatch(getPosts());
@@ -20,7 +20,7 @@ function PostListContainer() {
     dispatch(getUsers());
   }, []);
 
-  return <PostList postsIds={postsIds} commentsIds={commentsIds} />;
+  return <PostList postsIds={postsIds} CommentsObject={CommentsObject} />;
 }
 
 export default PostListContainer;

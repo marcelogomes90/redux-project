@@ -2,7 +2,7 @@ import PostItem from "./PostItem";
 import { useSelector } from "react-redux";
 import { postSelector } from "../../../store/slices/posts";
 
-function PostItemContainer({ postId, commentsIds }) {
+function PostItemContainer({ postId, CommentsObject }) {
   const postContent = useSelector((state) =>
     postSelector.selectById(state, postId)
   );
@@ -11,7 +11,7 @@ function PostItemContainer({ postId, commentsIds }) {
     <div>
       <PostItem
         postId={postId}
-        commentsIds={commentsIds}
+        CommentsObject={CommentsObject}
         postContent={postContent}
       />
     </div>

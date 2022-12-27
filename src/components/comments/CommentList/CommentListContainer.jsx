@@ -4,7 +4,7 @@ import { showComment, hideComment } from "../../../store/slices/showComments";
 import { useDispatch, useSelector } from "react-redux";
 import CommentList from "./CommentList";
 
-function CommentListContainer({ commentsIds, postId }) {
+function CommentListContainer({ CommentsObject, postId }) {
   const dispatch = useDispatch();
 
   const showComments = useSelector((state) => state.showComments.value);
@@ -27,7 +27,7 @@ function CommentListContainer({ commentsIds, postId }) {
       <CommentList
         showComments={showComments}
         postId={postId}
-        commentsIds={commentsIds}
+        CommentsObject={CommentsObject}
       />
     </div>
   );

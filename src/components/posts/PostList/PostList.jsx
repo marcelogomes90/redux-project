@@ -1,12 +1,12 @@
 import PostItemContainer from "../PostItem/PostItemContainer";
 
-function PostList({ postsIds, commentsIds }) {
+function PostList({ postsIds, CommentsObject }) {
   return (
     <>
       {postsIds.map((postId) => (
         <PostItemContainer
           key={postId}
-          commentsIds={commentsIds}
+          CommentsObject={CommentsObject}
           postId={postId}
         />
       ))}
