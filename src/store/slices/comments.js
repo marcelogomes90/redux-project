@@ -1,11 +1,18 @@
-import { createSlice, createAsyncThunk, createEntityAdapter } from "@reduxjs/toolkit";
+import {
+  createSlice,
+  createAsyncThunk,
+  createEntityAdapter,
+} from "@reduxjs/toolkit";
 
-export const getComments = createAsyncThunk("comments/getComments", async (thunkAPI) => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/comments?_limit=100").then
-    ((data) => data.json()
-  );
-  return res;
-});
+export const getComments = createAsyncThunk(
+  "comments/getComments",
+  async (thunkAPI) => {
+    const res = await fetch(
+      "https://jsonplaceholder.typicode.com/comments?_limit=100"
+    ).then((data) => data.json());
+    return res;
+  }
+);
 
 const commentsAdapter = createEntityAdapter({
   selectId: (comments) => comments.id,
@@ -26,10 +33,12 @@ export const commentSlice = createSlice({
       })
       .addCase(getComments.rejected, (state) => {
         state.loading = true;
-      })
+      });
   },
 });
 
-export const commentSelector = commentsAdapter.getSelectors((state) => state.comments);
+export const commentSelector = commentsAdapter.getSelectors(
+  (state) => state.comments
+);
 
 export const commentReducer = commentSlice.reducer;

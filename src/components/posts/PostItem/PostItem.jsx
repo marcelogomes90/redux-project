@@ -9,15 +9,10 @@ function PostItem({ postId, commentsIds, postContent }) {
         {postContent.title}
       </Text>
       <Text size="small">{postContent.body}</Text>
-      <UserContainer
-        postUserId={postContent.userId}
-      />
-      <CommentListContainer
-        postId={postId}
-        commentsIds={commentsIds}
-      />
+      <UserContainer postUserId={postContent.userId} />
+      <CommentListContainer postId={postId} commentsIds={commentsIds} />
     </Flex>
   );
-};
+}
 
 export default PostItem;

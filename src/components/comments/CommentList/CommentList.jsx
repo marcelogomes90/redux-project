@@ -12,7 +12,7 @@ function CommentList({ showComments, postId, commentsIds }) {
         />
       ))}
     </>
-  )
+  );
 }
 
 export default CommentList;

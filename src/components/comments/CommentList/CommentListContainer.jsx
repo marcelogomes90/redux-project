@@ -30,7 +30,7 @@ function CommentListContainer({ commentsIds, postId }) {
         commentsIds={commentsIds}
       />
     </div>
-  )
+  );
 }
 
 export default CommentListContainer;

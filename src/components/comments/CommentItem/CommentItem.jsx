@@ -14,6 +14,6 @@ function CommentItem({ commentContent }) {
       <Text size="extra-small">{`E-mail: ${commentContent.email}`}</Text>
     </Flex>
   );
-};
+}
 
 export default CommentItem;

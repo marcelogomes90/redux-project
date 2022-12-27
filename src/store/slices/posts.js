@@ -1,9 +1,13 @@
-import { createSlice, createAsyncThunk, createEntityAdapter } from "@reduxjs/toolkit";
+import {
+  createSlice,
+  createAsyncThunk,
+  createEntityAdapter,
+} from "@reduxjs/toolkit";
 
 export const getPosts = createAsyncThunk("posts/getPosts", async (thunkAPI) => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=20").then
-    ((data) => data.json()
-  );
+  const res = await fetch(
+    "https://jsonplaceholder.typicode.com/posts?_limit=20"
+  ).then((data) => data.json());
   return res;
 });
 
@@ -26,7 +30,7 @@ export const postSlice = createSlice({
       })
       .addCase(getPosts.rejected, (state) => {
         state.loading = true;
-      })
+      });
   },
 });
 

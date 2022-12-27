@@ -18,6 +18,6 @@ export const showCommentsSlice = createSlice({
   extraReducers: () => {},
 });
 
-export const { showComment, hideComment } = showCommentsSlice.actions
+export const { showComment, hideComment } = showCommentsSlice.actions;
 
 export const showCommentsReducer = showCommentsSlice.reducer;

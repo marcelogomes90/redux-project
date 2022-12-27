@@ -1,7 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPosts, postSelector } from "../../../store/slices/posts";
-import { getComments, commentSelector } from "../../../store/slices/comments.js";
+import {
+  getComments,
+  commentSelector,
+} from "../../../store/slices/comments.js";
 import { getUsers } from "../../../store/slices/users";
 import PostList from "./PostList";
 
@@ -17,12 +20,7 @@ function PostListContainer() {
     dispatch(getUsers());
   }, []);
 
-  return (
-    <PostList
-      postsIds={postsIds}
-      commentsIds={commentsIds}
-    />
-  );
-};
+  return <PostList postsIds={postsIds} commentsIds={commentsIds} />;
+}
 
 export default PostListContainer;

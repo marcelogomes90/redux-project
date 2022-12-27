@@ -3,7 +3,9 @@ import { useSelector } from "react-redux";
 import { postSelector } from "../../../store/slices/posts";
 
 function PostItemContainer({ postId, commentsIds }) {
-  const postContent = useSelector(state => postSelector.selectById(state, postId));
+  const postContent = useSelector((state) =>
+    postSelector.selectById(state, postId)
+  );
 
   return (
     <div>
@@ -14,6 +16,6 @@ function PostItemContainer({ postId, commentsIds }) {
       />
     </div>
   );
-};
+}
 
 export default PostItemContainer;
