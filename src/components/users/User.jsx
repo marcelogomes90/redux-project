@@ -1,10 +1,6 @@
-import { Text, Flex } from "@amigoapp/doca-react";
-import { useSelector } from "react-redux";
-import { userSelector } from "../../store/slices/users";
+import { Flex, Text } from "@amigoapp/doca-react";
 
-function UserItem({ userInfo }) {
-  const userContent = useSelector(state => userSelector.selectById(state, userInfo));
-
+function User({ userContent }) {
   return (
     <>
       <Flex gap={5} className="doca-mb-4">
@@ -33,4 +29,4 @@ function UserItem({ userInfo }) {
   );
 }
 
-export default UserItem;
+export default User;

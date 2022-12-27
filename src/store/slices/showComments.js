@@ -8,16 +8,16 @@ export const showCommentsSlice = createSlice({
   name: "showComments",
   initialState,
   reducers: {
-    incrementComment: (state) => {
+    showComment: (state) => {
       state.value = true;
     },
-    decrementComment: (state) => {
+    hideComment: (state) => {
       state.value = false;
     },
   },
   extraReducers: () => {},
 });
 
-export const { incrementComment, decrementComment } = showCommentsSlice.actions
+export const { showComment, hideComment } = showCommentsSlice.actions
 
 export const showCommentsReducer = showCommentsSlice.reducer;
