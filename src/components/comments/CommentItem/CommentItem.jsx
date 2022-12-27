@@ -1,6 +1,6 @@
 import { Flex, Text } from "@amigoapp/doca-react";
 
-function CommentItem({ commentContent, showComments, postId }) {
+function CommentItem({ commentContent, showComments, selectedPostId }) {
   return (
     <>
       { showComments ?

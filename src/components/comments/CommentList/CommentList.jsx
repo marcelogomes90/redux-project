@@ -1,11 +1,10 @@
 import CommentItemContainer from "../CommentItem/CommentItemContainer";
 
-function CommentList({ showComments, postId, CommentsObject }) {
+function CommentList({ postContent, CommentsObject }) {
   return (
     <>
       <CommentItemContainer
-        showComments={showComments}
-        postId={postId}
+        postContent={postContent}
         CommentsObject={CommentsObject}
       />
     </>

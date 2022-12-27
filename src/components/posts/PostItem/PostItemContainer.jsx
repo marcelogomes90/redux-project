@@ -10,7 +10,6 @@ function PostItemContainer({ postId, CommentsObject }) {
   return (
     <div>
       <PostItem
-        postId={postId}
         CommentsObject={CommentsObject}
         postContent={postContent}
       />
