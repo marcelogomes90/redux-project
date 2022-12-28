@@ -7,7 +7,7 @@ function UserContainer({ postUserId }) {
     userSelector.selectById(state, postUserId)
   );
 
-  return <User userContent={userContent} />;
+  return userContent ? <User userContent={userContent} /> : null;
 }
 
 export default UserContainer;

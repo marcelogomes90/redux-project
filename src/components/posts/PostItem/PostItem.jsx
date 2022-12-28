@@ -1,8 +1,8 @@
-import { Text, Flex } from "@amigoapp/doca-react";
+import { Text, Flex, Button, Separator } from "@amigoapp/doca-react";
 import CommentListContainer from "../../comments/CommentList/CommentListContainer";
 import UserContainer from "../../users/UserContainer";
 
-function PostItem({ CommentsObject, postContent }) {
+function PostItem({ CommentsObject, postContent, showComments, onShowCommentsClick }) {
   return (
     <Flex align="start" direction="col" gap={2} key={postContent.title}>
       <Text as="h1" weight="bold" size="large">
@@ -10,7 +10,22 @@ function PostItem({ CommentsObject, postContent }) {
       </Text>
       <Text size="small">{postContent.body}</Text>
       <UserContainer postUserId={postContent.userId} />
-      <CommentListContainer postContent={postContent} CommentsObject={CommentsObject} />
+      <Button
+        iconLeft="comment"
+        className="doca-mb-3"
+        size="small"
+        onClick={onShowCommentsClick}
+        variant="secondary"
+      >
+        {!showComments ? "Mostrar Comentários" : "Ocultar Comentários"}
+      </Button>
+      {showComments && (
+        <CommentListContainer
+          postContent={postContent}
+          CommentsObject={CommentsObject}
+        />
+      )}
+      <Separator />
     </Flex>
   );
 }

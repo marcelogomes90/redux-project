@@ -3,10 +3,7 @@ import CommentList from "./CommentList";
 function CommentListContainer({ CommentsObject, postContent }) {
   return (
     <div>
-      <CommentList
-        postContent={postContent}
-        CommentsObject={CommentsObject}
-      />
+      <CommentList postContent={postContent} CommentsObject={CommentsObject} />
     </div>
   );
 }
