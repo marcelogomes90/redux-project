@@ -1,9 +1,9 @@
 import { Flex, Text } from "@amigoapp/doca-react";
 
-function CommentItem({ commentContent, showComments, selectedPostId }) {
+function CommentItem({ commentContent, showComments, postContent, selectedPostId }) {
   return (
     <>
-      { showComments ?
+      { showComments && postContent.id === selectedPostId ?
         <Flex
           key={commentContent.name}
           align="start"
