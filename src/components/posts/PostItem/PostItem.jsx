@@ -2,7 +2,7 @@ import { Text, Flex, Button, Separator } from "@amigoapp/doca-react";
 import CommentListContainer from "../../comments/CommentList/CommentListContainer";
 import UserContainer from "../../users/UserContainer";
 
-function PostItem({ CommentsObject, postContent, showComments, onShowCommentsClick }) {
+function PostItem({ postContent, showComments, onShowCommentsClick }) {
   return (
     <Flex align="start" direction="col" gap={2} key={postContent.title}>
       <Text as="h1" weight="bold" size="large">
@@ -22,7 +22,6 @@ function PostItem({ CommentsObject, postContent, showComments, onShowCommentsCli
       {showComments && (
         <CommentListContainer
           postContent={postContent}
-          CommentsObject={CommentsObject}
         />
       )}
       <Separator />

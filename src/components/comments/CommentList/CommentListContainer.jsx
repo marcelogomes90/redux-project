@@ -1,10 +1,20 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getComments, commentSelector } from "../../../store/slices/comments.js";
 import CommentList from "./CommentList";
 
-function CommentListContainer({ CommentsObject, postContent }) {
+function CommentListContainer({ postContent }) {
+  const dispatch = useDispatch();
+  const commentsIds = useSelector(commentSelector.selectIds);
+
+  useEffect(() => {
+    dispatch(getComments())
+  }, []);
+
   return (
-    <div>
-      <CommentList postContent={postContent} CommentsObject={CommentsObject} />
-    </div>
+    <>
+      <CommentList postContent={postContent} commentsIds={commentsIds} />
+    </>
   );
 }
 

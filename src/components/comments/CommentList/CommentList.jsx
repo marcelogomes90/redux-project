@@ -1,15 +1,16 @@
 import CommentItemContainer from "../CommentItem/CommentItemContainer";
 
-function CommentList({ postContent, CommentsObject }) {
+function CommentList({ postContent, commentsIds }) {
   return (
-    <>
-      {CommentsObject.filter((commentObject) => commentObject.postId === postContent.id).map((commentContent) => (
+    <div>
+      {commentsIds?.map((commentId) => (
         <CommentItemContainer
-          key={commentContent.id}
-          commentContent={commentContent}
+          key={commentId}
+          commentId={commentId}
+          postContent={postContent}
         />
       ))}
-    </>
+    </div>
   );
 }
 

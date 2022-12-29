@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { postSelector } from "../../../store/slices/posts";
 import { useCallback, useState } from "react";
 
-function PostItemContainer({ postId, CommentsObject }) {
+function PostItemContainer({ postId }) {
   const [showComments, setShowComments] = useState(false);
 
   const postContent = useSelector((state) =>
@@ -18,7 +18,6 @@ function PostItemContainer({ postId, CommentsObject }) {
     <div>
       <PostItem
         showComments={showComments}
-        CommentsObject={CommentsObject}
         postContent={postContent}
         onShowCommentsClick={onShowCommentsClick}
       />
